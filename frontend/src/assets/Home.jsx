@@ -29,6 +29,9 @@ function Home() {
                         <td>{student.ID}</td>
                         <td>{student.Name}</td>
                         <td>{student.Email}</td>
+                        <td><button>Update</button>
+                            <button>Delete</button>
+                        </td>  
                         </tr>
                 })}       
             </tbody>
