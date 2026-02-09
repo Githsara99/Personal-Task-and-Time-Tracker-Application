@@ -78,6 +78,11 @@ function Home() {
                     <td>{student.Email}</td>
                     <td>{student.ID}</td>
                     <td>
+                      <Link to={`/read/${student.ID}`} className="btn btn-sm me-2"
+                        style={{ backgroundColor: "#c7e3ff", border: "none" }}>
+                        ✏️ Read
+                      </Link>
+
                       <button className="btn btn-sm me-2"
                         style={{ backgroundColor: "#c7e3ff", border: "none" }}>
                         ✏️ Update
