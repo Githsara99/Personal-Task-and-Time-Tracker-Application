@@ -4,6 +4,7 @@ import mysql from 'mysql2'
 
 const app = express();
 app.use(cors());
+app.use(express.json());
 
 const db = mysql.createConnection({
     host: 'localhost',
@@ -40,6 +41,30 @@ app.get('/', (req, res) => {
         }
         console.log("Query successful, rows:", result.length);
         return res.json(result);
+    })
+});
+
+// app.post('/student', (req, res) => {
+//     const sql = "INSERT INTO student (Name, Email) VALUES (?, ?)";
+//     const values = [req.body.Name, req.body.Email];
+//     db.query(sql, values, (err, result) => {
+//         if(err) return res.json({Message: "Error inside server", Error: err.message});
+//         return res.json({Message: "Student created successfully", result});
+//     })
+// });
+
+app.post('/student', (req, res) => {
+    console.log("Received data:", req.body);
+    const sql = "INSERT INTO student (`Name`, `Email`) VALUES (?, ?)";
+    const values = [req.body.Name, req.body.Email];
+    console.log("Values array:", values);
+    
+    db.query(sql, values, (err, result) => {
+        if(err) {
+            console.log("SQL Error:", err);
+            return res.json({Message: "Error inside server", Error: err.message});
+        }
+        return res.json({Message: "Student created successfully", result});
     })
 });
 
