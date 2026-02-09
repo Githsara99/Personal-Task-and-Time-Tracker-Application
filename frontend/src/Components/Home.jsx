@@ -42,6 +42,14 @@ function Home() {
       </div>
     )
 
+  const handleDelete = (id) => {
+    axios.delete(`http://localhost:8081/delete/` + id)
+      .then(res => { 
+        location.reload();
+      })
+      .catch(err => console.log(err));
+  }
+
   return (
     <div className="container mt-4">
 
@@ -83,12 +91,12 @@ function Home() {
                         ✏️ Read
                       </Link>
 
-                      <button className="btn btn-sm me-2"
+                      <Link to={`/edit/${student.ID}`} className="btn btn-sm me-2"
                         style={{ backgroundColor: "#c7e3ff", border: "none" }}>
                         ✏️ Update
-                      </button>
+                      </Link>
 
-                      <button className="btn btn-sm"
+                      <button onClick={() => handleDelete(student.ID)} className="btn btn-sm"
                         style={{ backgroundColor: "#ffd6e6", border: "none" }}>
                         🗑 Delete
                       </button>

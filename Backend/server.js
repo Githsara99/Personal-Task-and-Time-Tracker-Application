@@ -81,6 +81,23 @@ app.get('/read/:id', (req, res) => {
     })
 });
 
+app.put('/edit/:id', (req, res) => {
+    const sql = "UPDATE student SET Name = ?, Email = ? WHERE ID = ?";
+    const id = req.params.id;
+    db.query(sql, [req.body.Name, req.body.Email, id], (err, result) => {
+        if(err) return res.json({Message: "Error inside server", Error: err.message});
+        return res.json(result);
+    })
+});
+
+app.delete('/delete/:id', (req, res) => {
+    const sql = "DELETE FROM student WHERE ID = ?";
+    const id = req.params.id; 
+    db.query(sql, [id], (err, result) => {
+        if(err) return res.json({Message: "Error inside server", Error: err.message});
+        return res.json(result);
+    })
+});
 
 app.listen(8081, ()=>{
     console.log("Server is running on port 8081");
