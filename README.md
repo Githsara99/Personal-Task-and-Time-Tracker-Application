@@ -157,8 +157,6 @@ tasks (1:N) time_logs
 
 ## 🙏 Acknowledgments
 
-* **Anthropic** - For providing Claude AI assistance
-* **Bootstrap Team** - For the excellent CSS framework
 * **React Community** - For comprehensive documentation
 * **MySQL** - For robust database management
 * **Stack Overflow Community** - For troubleshooting support
