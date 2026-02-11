@@ -26,10 +26,10 @@ const pool = mysql.createPool({
 (async () => {
   try {
     const connection = await pool.getConnection();
-    console.log("✅ Connected to task_tracker database");
+    console.log("Connected to task_tracker database");
     connection.release();
   } catch (err) {
-    console.error("❌ Database connection failed:", err);
+    console.error("Database connection failed:", err);
   }
 })();
 
